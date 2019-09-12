@@ -6,6 +6,7 @@
       <p class="price">${{product.price}}</p>
     </div>
     <img class="image" :src="product.imageUrl" />
+    <button @click="addToCart">Add to cart</button>
   </div>
 </template>
 
@@ -21,7 +22,12 @@ export default {
     this.product = this.$store.getters.products
       .filter(item => item.slug === this.$route.params.slug)
       .shift()
+  },
+  methods: {
+  addToCart() {
+    this.$store.commit('addToCart', { product: this.product, quantity: 1 })
   }
+}
 }
 </script>
 
@@ -34,9 +40,6 @@ export default {
   max-width: 1200px;
 }
 
-.image {
-}
-
 .content h1 {
   padding-bottom: 50px;
 }
@@ -45,4 +48,13 @@ export default {
 .price {
   padding-top: 20px;
 }
+
+button {
+  margin-top: 50px;
+  padding: 10px 40px;
+  background-color: rgb(42, 126, 42);
+  border-color: gray;
+  color: white
+}
+
 </style>
