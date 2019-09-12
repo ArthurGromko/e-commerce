@@ -1,11 +1,11 @@
 <template>
   <div class="products-list">
-    <div v-for="(product, index) in $store.getters.products" :key="index" @click="$router.push(`/product/${product.slug}`)">
+    <div style="border:3px solid black" v-for="(product, index) in $store.getters.products" :key="index" @click="$router.push(`/product/${product.slug}`)">
       <img :src="product.imageUrl" />
       <h2>{{product.name}}</h2>
       <p class="description">{{product.description}}</p>
       <p class="price">${{product.price}}</p>
-      <button @click.stop="deleteProduct(index)">ⓧ</button>
+      <button @click.stop="deleteProduct(index)">Remove product</button>
     </div>
   </div>
 </template>
@@ -28,15 +28,16 @@ export default {
 }
 .products-list div {
   width: 33%;
-
-  box-sizing: border-box;
+    background-color: rgb(235, 235, 235);
   padding: 30px;
-  background-color: lightsalmon;
+  
 }
 
 button {
-  padding: 30px;
-  font-size: 2rem;
+  font-size: 1.3rem;
+  background-color: darkslategrey;
+  color: white;
+  border-width: 0.3rem
 }
 
 .description,
