@@ -1,5 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VuexPersist from 'vuex-persist'
+
+const vuexLocalStorage = new VuexPersist({
+  key: 'ecommerce', // a unique key to store the data
+  storage: window.localStorage
+})
 
 Vue.use(Vuex);
 
@@ -64,7 +70,8 @@ export default new Vuex.Store({
   getters: {
     products: state => state.products,
     cart: state => state.cart
-  }
+  },
+  plugins: [vuexLocalStorage.plugin]
 });
 
 

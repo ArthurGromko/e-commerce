@@ -36,6 +36,7 @@ export default {
                 description: this.description,
                 imageUrl: this.imageUrl
             })
+            this.$router.push("products")
         }
     }
 }
